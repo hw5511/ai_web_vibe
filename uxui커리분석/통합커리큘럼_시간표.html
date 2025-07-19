@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UXUI + 바이브 코딩 통합 커리큘럼 시간표</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header h1 {
+            color: #4a5568;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        
+        .header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+        
+        .timeline-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .course-column {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .course-title {
+            text-align: center;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .uxui-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .vibe-title {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .week-section {
+            margin-bottom: 30px;
+            border-left: 4px solid #e2e8f0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .week-header {
+            background: #f7fafc;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4299e1;
+            font-weight: bold;
+            color: #2d3748;
+        }
+        
+        .session {
+            background: white;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .session:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-color: #4299e1;
+        }
+        
+        .session-date {
+            background: #edf2f7;
+            color: #4a5568;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .session-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+        
+        .session-content {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        .session-content ul {
+            margin-top: 8px;
+            padding-left: 20px;
+        }
+        
+        .session-content li {
+            margin-bottom: 4px;
+        }
+        
+        .vibe-session {
+            border-left: 4px solid #f093fb;
+        }
+        
+        .vibe-session .session-date {
+            background: #fed7d7;
+            color: #c53030;
+        }
+        
+        .progress-indicator {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 90;
+        }
+        
+        .progress-text {
+            font-size: 0.9rem;
+            color: #4a5568;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .progress-bar {
+            width: 150px;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .progress-indicator {
+                display: none;
+            }
+        }
+        
+        .highlight {
+            background: #fff5f5 !important;
+            border-color: #f56565 !important;
+        }
+        
+        .connection-line {
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            width: 30px;
+            height: 2px;
+            background: #cbd5e0;
+            z-index: 1;
+        }
+        
+        @media (min-width: 769px) {
+            .vibe-session::before {
+                content: '';
+                position: absolute;
+                left: -45px;
+                top: 50%;
+                width: 30px;
+                height: 2px;
+                background: #f093fb;
+                z-index: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎨 UXUI + 💻 바이브 코딩 통합 커리큘럼</h1>
+        <p>한달 집중 과정 · UXUI 이론 + AI 활용 웹 개발 실무</p>
+    </div>
+    
+    <div class="progress-indicator">
+        <div class="progress-text">학습 진도</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div id="progressText" style="text-align: center; margin-top: 8px; font-size: 0.8rem; color: #4a5568;">0%</div>
+    </div>
+    
+    <div class="timeline-container">
+        <!-- UXUI 디자인 컬럼 -->
+        <div class="course-column">
+            <div class="course-title uxui-title">
+                🎨 UXUI 디자인<br>
+                <small style="font-size: 0.8rem; opacity: 0.9;">주 3회 (월/수/금) · 회당 2시간 · 총 10회</small>
+            </div>
+            
+            <!-- 1주차 -->
+            <div class="week-section">
+                <div class="week-header">📅 1주차: 디자인 사고의 기초</div>
+                
+                <div class="session" data-week="1" data-session="1">
+                    <div class="session-date">1주차 월요일</div>
+                    <div class="session-title">1회차: UX/UI 개념과 디자인 사고</div>
+                    <div class="session-content">
+                        <ul>
+                            <li><strong>다이아몬드 디자인 모델</strong> - Discover → Define → Develop → Deliver</li>
+                            <li>UX와 UI의 차이점 및 역할</li>
+                            <li>디자인 사고 5단계 프로세스</li>
+                            <li>사용자 중심 디자인 원칙</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="session" data-week="1" data-session="2">
+                    <div class="session-date">1주차 수요일</div>
+                    <div class="session-title">2회차: 디자인 시스템과 아토믹 디자인</div>
+                    <div class="session-content">
+                        <ul>
+                            <li><strong>아토믹 디자인 프로세스</strong> - Atoms → Molecules → Organisms → Templates → Pages</li>
+                            <li>디자인 시스템의 필요성과 구성 요소</li>
+                            <li>컴포넌트 기반 디자인 방법론</li>
+                            <li>브랜드 아이덴티티와 디자인 일관성</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="session" data-week="1" data-session="3">
+                    <div class="session-date">1주차 금요일</div>
+                    <div class="session-title">3회차: 사용자 리서치 방법론</div>
+                    <div class="session-content">
+                        <ul>
+                            <li>사용자 페르소나(Persona) 작성법</li>
+                            <li>고객 여정 지도(Customer Journey Map)</li>
+                            <li>사용자 인터뷰 및 설문조사 기법</li>
+                            <li>어피니티 다이어그램(Affinity Diagram) 활용</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2주차 -->
+            <div class="week-section">
+                <div class="week-header">📅 2주차: 비주얼 디자인과 상호작용</div>
+                
+                <div class="session" data-week="2" data-session="4">
+                    <div class="session-date">2주차 월요일</div>
+                    <div class="session-title">4회차: 정보 구조와 와이어프레임</div>
+                    <div class="session-content">
+                        <ul>
+                            <li>정보 구조(IA) 설계</li>
+                            <li>사용자 플로우(User Flow) 작성</li>
+                            <li>와이어프레임 작성 원칙</li>
+                            <li>Lo-Fi vs Hi-Fi 프로토타입 차이</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="session" data-week="2" data-session="5">
+                    <div class="session-date">2주차 수요일</div>
+                    <div class="session-title">5회차: 색채학과 타이포그래피</div>
+                    <div class="session-content">
+                        <ul>
+                            <li>색채 심리학과 UI 적용</li>
+                            <li>색상 대비와 접근성 고려사항</li>
+                            <li>타이포그래피 위계(Typography Hierarchy)</li>
+                            <li>웹폰트와 가독성 원칙</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="session" data-week="2" data-session="6">
+                    <div class="session-date">2주차 금요일</div>
+                    <div class="session-title">6회차: 레이아웃과 그리드 시스템</div>
+                    <div class="session-content">
+                        <ul>
+                            <li>그리드 시스템(Grid System) 이해</li>
+                            <li>여백(White Space)의 중요성</li>
+                            <li>반응형 레이아웃 원칙</li>
+                            <li>모바일 퍼스트 vs 데스크탑 퍼스트</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3주차 -->
+            <div class="week-section">
+                <div class="week-header">📅 3주차: 웹 디자인과 최신 트렌드</div>
+                
+                <div class="session" data-week="3" data-session="7">
+                    <div class="session-date">3주차 월요일</div>
+                    <div class="session-title">7회차: 인터랙션 디자인</div>
+                    <div class="session-content">
+                        <ul>
+                            <li>마이크로 인터랙션 설계</li>
+                            <li>사용자 피드백과 상태 표시</li>
+                            <li>전환과 애니메이션 원칙</li>
+                            <li>사용성 테스트 방법론</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="session" data-week="3" data-session="8">
+                    <div class="session-date">3주차 수요일</div>
+                    <div class="session-title">8회차: 모바일 UI/UX 디자인</div>
+                    <div class="session-content">
+                        <ul>
+                            <li>모바일 디자인 패턴</li>
+                            <li>터치 인터페이스 설계 원칙</li>
+                            <li>iOS vs Android 디자인 가이드라인</li>
+                            <li>앱 아이콘과 스플래시 화면 설계</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="session" data-week="3" data-session="9">
+                    <div class="session-date">3주차 금요일</div>
+                    <div class="session-title">9회차: 웹 접근성과 사용성</div>
+                    <div class="session-content">
+                        <ul>
+                            <li>웹 접근성 가이드라인</li>
+                            <li>WCAG 2.1 준수 사항</li>
+                            <li>키보드 내비게이션과 스크린 리더</li>
+                            <li>포용적 디자인 원칙</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 4주차 -->
+            <div class="week-section">
+                <div class="week-header">📅 4주차: 실무 프로젝트</div>
+                
+                <div class="session" data-week="4" data-session="10">
+                    <div class="session-date">4주차 금요일</div>
+                    <div class="session-title">10회차: 포트폴리오와 발표</div>
+                    <div class="session-content">
+                        <ul>
+                            <li>디자인 포트폴리오 구성법</li>
+                            <li>케이스 스터디 작성 방법</li>
+                            <li>디자인 발표와 피드백</li>
+                            <li>지속적인 학습 방향</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 바이브 코딩 컬럼 -->
+        <div class="course-column">
+            <div class="course-title vibe-title">
+                💻 바이브 코딩<br>
+                <small style="font-size: 0.8rem; opacity: 0.9;">주 1회 (토요일) · 회당 4시간 · 총 4회</small>
+            </div>
+            
+            <!-- 1주차 바이브 코딩 -->
+            <div class="week-section">
+                <div class="week-header">💻 1주차 바이브 코딩</div>
+                
+                <div class="session vibe-session" data-week="1" data-vibe="1">
+                    <div class="session-date">1주차 토요일</div>
+                    <div class="session-title">1회차: AI 기반 웹 개발 기초 (4시간)</div>
+                    <div class="session-content">
+                        <strong>전반부 (2시간): AI 도구 소개와 환경 설정</strong>
+                        <ul>
+                            <li>ChatGPT, Claude, Cursor AI 등 AI 코딩 도구 비교</li>
+                            <li>Figma to Code 자동 변환 도구들</li>
+                            <li>V0.dev, Bolt.new 등 AI 웹 빌더 활용</li>
+                            <li>개발 환경 설정 (VS Code + AI 확장)</li>
+                        </ul>
+                        <strong>후반부 (2시간): 첫 번째 웹페이지 구현</strong>
+                        <ul>
+                            <li>UXUI 수업의 와이어프레임을 AI로 구현</li>
+                            <li>간단한 랜딩 페이지 생성</li>
+                            <li>컴포넌트 기반 접근법 실습</li>
+                            <li>반응형 디자인 자동 적용</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2주차 바이브 코딩 -->
+            <div class="week-section">
+                <div class="week-header">💻 2주차 바이브 코딩</div>
+                
+                <div class="session vibe-session" data-week="2" data-vibe="2">
+                    <div class="session-date">2주차 토요일</div>
+                    <div class="session-title">2회차: 디자인 시스템을 코드로 변환 (4시간)</div>
+                    <div class="session-content">
+                        <strong>전반부 (2시간): 디자인 토큰과 CSS 변수</strong>
+                        <ul>
+                            <li>UXUI에서 학습한 디자인 토큰을 CSS로 변환</li>
+                            <li>색상, 타이포그래피, 간격 체계 코드화</li>
+                            <li>AI를 활용한 CSS 클래스 네이밍</li>
+                            <li>스타일 가이드 자동 생성</li>
+                        </ul>
+                        <strong>후반부 (2시간): 컴포넌트 라이브러리 구축</strong>
+                        <ul>
+                            <li>Atoms(버튼, 입력 필드) 컴포넌트 제작</li>
+                            <li>Molecules(카드, 폼) 조합 방법</li>
+                            <li>AI로 생성한 컴포넌트 최적화</li>
+                            <li>재사용 가능한 코드 작성법</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3주차 바이브 코딩 -->
+            <div class="week-section">
+                <div class="week-header">💻 3주차 바이브 코딩</div>
+                
+                <div class="session vibe-session" data-week="3" data-vibe="3">
+                    <div class="session-date">3주차 토요일</div>
+                    <div class="session-title">3회차: 인터랙티브 웹 구현 (4시간)</div>
+                    <div class="session-content">
+                        <strong>전반부 (2시간): 사용자 인터랙션 구현</strong>
+                        <ul>
+                            <li>마이크로 인터랙션 코드 구현</li>
+                            <li>호버, 클릭, 스크롤 이벤트 처리</li>
+                            <li>CSS 애니메이션과 Transition</li>
+                            <li>AI를 활용한 JavaScript 자동 생성</li>
+                        </ul>
+                        <strong>후반부 (2시간): 프로토타입을 실제 웹으로</strong>
+                        <ul>
+                            <li>Figma 프로토타입을 웹으로 변환</li>
+                            <li>네비게이션과 라우팅 구현</li>
+                            <li>폼 유효성 검사와 피드백</li>
+                            <li>모바일 터치 인터페이스 적용</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 4주차 바이브 코딩 -->
+            <div class="week-section">
+                <div class="week-header">💻 4주차 바이브 코딩</div>
+                
+                <div class="session vibe-session" data-week="4" data-vibe="4">
+                    <div class="session-date">4주차 토요일</div>
+                    <div class="session-title">4회차: 완성된 웹사이트 배포 (4시간)</div>
+                    <div class="session-content">
+                        <strong>전반부 (2시간): 성능 최적화와 접근성</strong>
+                        <ul>
+                            <li>AI를 활용한 코드 최적화</li>
+                            <li>웹 접근성 자동 검사 및 수정</li>
+                            <li>SEO 최적화와 메타태그 자동 생성</li>
+                            <li>크로스 브라우저 호환성 확인</li>
+                        </ul>
+                        <strong>후반부 (2시간): 배포와 유지보수</strong>
+                        <ul>
+                            <li>Netlify, Vercel 등을 활용한 배포</li>
+                            <li>도메인 연결과 HTTPS 설정</li>
+                            <li>Google Analytics 연동</li>
+                            <li>지속적인 개선과 업데이트 방법</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 스크롤 진도 표시 기능
+        function updateProgress() {
+            const sessions = document.querySelectorAll('.session');
+            const totalSessions = sessions.length;
+            const viewportHeight = window.innerHeight;
+            const scrollTop = window.pageYOffset;
+            
+            let visibleSessions = 0;
+            
+            sessions.forEach(session => {
+                const rect = session.getBoundingClientRect();
+                if (rect.top < viewportHeight * 0.8) {
+                    visibleSessions++;
+                    session.style.opacity = '1';
+                } else {
+                    session.style.opacity = '0.7';
+                }
+            });
+            
+            const progress = Math.min(100, (visibleSessions / totalSessions) * 100);
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            progressFill.style.width = progress + '%';
+            progressText.textContent = Math.round(progress) + '%';
+        }
+        
+        // 현재 진행 중인 세션 하이라이트
+        function highlightCurrentWeek() {
+            const currentDate = new Date();
+            const sessions = document.querySelectorAll('.session');
+            
+            // 예시: 1주차라고 가정하고 해당 세션들을 하이라이트
+            const currentWeek = 1; // 실제로는 현재 날짜를 기준으로 계산
+            
+            sessions.forEach(session => {
+                const week = parseInt(session.getAttribute('data-week'));
+                if (week === currentWeek) {
+                    session.classList.add('highlight');
+                }
+            });
+        }
+        
+        // 부드러운 스크롤 애니메이션
+        function smoothScrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // 이벤트 리스너
+        window.addEventListener('scroll', updateProgress);
+        window.addEventListener('load', () => {
+            updateProgress();
+            highlightCurrentWeek();
+        });
+        
+        // 세션 클릭 시 상세 정보 표시 (향후 확장 가능)
+        document.querySelectorAll('.session').forEach(session => {
+            session.addEventListener('click', function() {
+                // 클릭된 세션 정보를 활용한 추가 기능 구현 가능
+                console.log('클릭된 세션:', this.querySelector('.session-title').textContent);
+            });
+        });
+        
+        // 초기 애니메이션
+        window.addEventListener('load', () => {
+            const sessions = document.querySelectorAll('.session');
+            sessions.forEach((session, index) => {
+                session.style.opacity = '0';
+                session.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    session.style.transition = 'all 0.6s ease';
+                    session.style.opacity = '1';
+                    session.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

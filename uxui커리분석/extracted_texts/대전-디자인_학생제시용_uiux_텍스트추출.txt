@@ -1,0 +1,241 @@
+원본 파일: C:\Users\yangh\OneDrive\문서\카카오톡 받은 파일\웹 커리큘럼_250618\대전\대전-디자인_학생제시용_uiux.pptx
+변환 일시: 2025-07-17 20:36:48.688581
+==================================================
+
+=== 슬라이드 1 ===
+UI·UX 과정 커리큘럼
+UI·UX
+WEB DESIGN
+UI·UX
+
+
+=== 슬라이드 2 ===
+
+
+
+
+
+UI·UX
+
+사용 소프트웨어
+Figma, Photoshop ,  Illustration
+사전 준비 항목
+컴퓨터 운영체제  Windows , Mac os 
+사용자 경험 (UX) 이해 사용자의 요구와 행동을 분석하고 ,이를 디자인에 반영하는 방법을 학습합니다 . 
+UI디자인 기본 원칙 습득
+시각적 계층 구조 , 색상 이론 , 타이포그래피 ,레이아웃 설계 등 UI 디자인의 핵심 원칙을 이해하고 적용합니다.
+수업 방식
+최신 UI/UX 트렌드 를 탐구하고 적용합니다.
+각 섹션 별로 알아야 할 학습내용에 대한 이해 과정
+학습한 내용에 제공된 예제를 참고하여 자료 제작 및 발표 
+취업분야 및 전망
+웹디자이너 + UI/UX 디자이너 + 프로덕트 디자이너 
+: 웹에이전시 / 특정 브랜드 내에 웹디자이너 / 쇼핑몰 등 
+훈련 목표
+난이도 :  난이도 중, 컴퓨터 초보자(윈도우 모르는 학생분)는  수업 불가
+선수강 과목 : Photoshop, Illustrator, 브랜딩
+학습 수준
+UI·UX
+Lecture Plan
+
+
+
+
+
+WEB DESIGN PUBLISHER
+
+=== 슬라이드 3 ===
+
+
+
+
+
+01 Day
+Main contents
+Learning objectives
+UX디자인 이란? 
+UX디자인의 정의
+
+02 Day
+Main contents
+UX의 사례 / 적용
+UX적 사고를 위한 방법
+03 Day
+Main contents
+UX 경험의 흐름과 흐름 분석
+UX의 디자인의 필요성
+04 Day
+Main contents
+UX PROCESS
+UX  다지인 이해하기
+UX  사고 학습 
+Learning objectives
+Learning objectives
+UX를 위한 경험의 흐름 분석  및 사용 연습
+UX 의 사례 / 적용 방법 학습
+Learning objectives
+UX 프로세스
+UX (격일) 
+Day Plan
+WEB DESIGN PUBLISHER
+
+=== 슬라이드 4 ===
+
+
+
+
+
+05 Day
+Main contents
+Learning objectives
+UX 리서치
+06 Day
+Main contents
+UX 모델링 
+07 Day
+Main contents
+Persona 모델링
+08 Day
+Main contents
+Journeymap 모델링
+UX 리서치방법 연습
+Learning objectives
+Learning objectives
+UX 페르소나 모델링 학습 / 연습
+UX 모델링 과 종류 학습
+Learning objectives
+UX 저니맵 모델링 학습 / 연습
+UX (격일) 
+Day Plan
+WEB DESIGN PUBLISHER
+
+=== 슬라이드 5 ===
+
+
+
+
+
+09 Day
+Main contents
+Learning objectives
+Affinity 모델링
+10 Day
+Main contents
+키워드 도출 
+UX Concept 도출 
+UX 어피니티 모델링 학습 / 연습
+Learning objectives
+키워드 도출 
+UX 컨셉 도출
+UX (격일) 
+Day Plan
+WEB DESIGN PUBLISHER
+
+=== 슬라이드 6 ===
+
+
+
+
+
+UX
+Weekly Example Image
+WEB DESIGN PUBLISHER
+
+=== 슬라이드 7 ===
+
+
+
+
+
+01 Day
+Main contents
+Learning objectives
+UI다지인의 이론
+웹/모바일 디자인의 이해
+Work Flow
+02 Day
+Main contents
+User Flow
+Wire Frame
+03 Day
+Main contents
+스케치 작업
+아키텍쳐
+04 Day
+Main contents
+Figma 디자인툴 연습 
+UI디자인 방법론 습득
+웹 / 모바일 디자인 이해 
+UI디자인 흐름 순서 이해
+Learning objectives
+Learning objectives
+스케치 작업 연습
+유저플로우 제작 하기
+ 와이어프레임 작업  
+Learning objectives
+Figma 디자인툴 사용방법연습 및 습득
+UI (격일)
+Day Plan
+WEB DESIGN PUBLISHER
+
+=== 슬라이드 8 ===
+
+
+
+
+
+05 Day
+Main contents
+Learning objectives
+Figma 디자인툴 연습 
+06 Day
+Main contents
+Figma UI 실습
+07 Day
+Main contents
+ Figma UI 실습
+08 Day
+Main contents
+Figma UI 실습 
+Figma 디자인툴 사용방법연습 및 습득
+Learning objectives
+Learning objectives
+Figma UI디자인 실습
+Figma UI디자인 실습
+Learning objectives
+Figma  UI디자인 실습
+UI (격일)
+Day Plan
+WEB DESIGN PUBLISHER
+
+=== 슬라이드 9 ===
+
+
+
+
+
+09 Day
+Main contents
+Learning objectives
+Figma UI 실습 마무리
+10 Day
+Main contents
+프로토타입 
+UI디자인 실습 최종 마무리
+Learning objectives
+키워드 도출 
+UX 컨셉 도출
+UI (격일) 
+Day Plan
+WEB DESIGN PUBLISHER
+
+=== 슬라이드 10 ===
+
+
+
+
+
+UI
+Weekly Example Image
+WEB DESIGN PUBLISHER
+

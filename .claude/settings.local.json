@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "*",
+      "Bash(claude mcp:*)",
+      "mcp__supabase__list_tables",
+      "mcp__supabase__get_project_url"
+    ],
+    "deny": []
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "supabase",
+    "netlify"
+  ]
+}

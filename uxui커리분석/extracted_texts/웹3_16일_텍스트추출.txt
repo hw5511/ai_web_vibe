@@ -1,0 +1,55 @@
+원본 파일: C:\Users\yangh\OneDrive\문서\카카오톡 받은 파일\웹 커리큘럼_250618\홍대\웹3_16일.pdf
+변환 일시: 2025-07-17 20:36:48.960903
+==================================================
+
+웹학과
+Web Design
+웹3
+WEB3(javascript기초+Jquery)
+
+웹학과 커리큘럼 일차별 과목주제
+Web design curriculum
+일차 수업 내용 특징 일차 수업 내용 특징
+Day.01 강사소개 및 수업 OT javascript와 jquery Day.09 팝업창의 종류와 제작(modal) background, opacity, position
+Day.02 javascript의 선언과 출력 var, 변수, Prompt, alert, consol Day.10 슬라이더 제작(양방향) 이벤트메서드, 변수와 연산자의 활용
+Day.03 산술연산과 조건문 대입연산자,산술연산자, if Day.11 슬라이더 제작(디스플레이)과 좌우버튼 display, addClass(), removeClass()
+Day.04 다중 if문의 활용 if, else if, else Day.12 슬라이더 제작(fade) fade~()
+Day.05 for문과 if문의 활용 for, if, 증감연산자 Day.13 API를 활용한 기능 사용 FTP, API
+Day.06 J-Query연동과 활용 jquery, 이벤트메서드, css메서드 Day.14 slickslider 오픈소스의 활용
+Day.07 mouse~()를 활용한 depth구조 이벤트메서드, float, slide~() Day.15 다양한 오픈소스의 사용 bxslider, jquery modal
+Day.08 window를 활용한 fullpage window(), width(), height() Day.16 jquery-ui를 활용한 속도제어 jquery-ui
+
+01. 강사소개 및 OT
+주제 : 각 코딩의 종류와 차이점
+주요 기능 : javascript, jquery
+SBS컴퓨터아카데미아트학원홍대점
+
+02_05. javascript의 활용
+주제 : 변수,연산자, 조건문, 반복문의 활용
+주요 기능 : var, 변수, prompt, alert, consol,
+대입연산자, 산술연산자, 비교연산자, 논리연산자
+for, 증감연산자, if, else if, else
+SBS컴퓨터아카데미아트학원홍대점
+
+07. depth구조의 활용
+주제 : mouse~()를 활용한 depth구조
+주요 기능 : 이벤트메서드, float, slide~()
+SBS컴퓨터아카데미아트학원홍대점
+
+8_9. fullpage와 팝업창의 종류
+주제 : fullpage를 활용한 modal과 layer
+주요 기능 : window, .height(),
+background,opacity, position
+SBS컴퓨터아카데미아트학원홍대점
+
+10_12.슬라이더의 종류와 제작
+주제 : 양방향, 일방향, display, fade슬라이더
+주요 기능 : .animate(), 연산의 활용, .addClass(), removeClass()
+SBS컴퓨터아카데미아트학원홍대점
+
+13_16. API, 플러그인, 오픈소스
+주제 : API, 플러그인, 오픈소스의 활용
+주요 기능 : 카카오맵 API, bxslider, slickslider,
+jquery_modal, jquery_UI
+SBS컴퓨터아카데미아트학원홍대점
+
